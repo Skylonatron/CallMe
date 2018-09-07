@@ -11,7 +11,7 @@ class TwilioIntegration
 
   def make_call
     @client.calls.create(
-      url: 'http://demo.twilio.com/docs/voice.xml',
+      url: 'https://call-lead.herokuapp.com/twilio',
       to: '+16267102292',
       from: '+16267102292'
     )
