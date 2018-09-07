@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   end
 
 
-  post 'twilio', to: 'twilio#call'
+  post 'call', to: 'twilio#call'
+  post 'forward', to: 'twilio#forward'
+
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
