@@ -9,10 +9,10 @@ class TwilioIntegration
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
-  def make_call
+  def make_call(number)
     @client.calls.create(
       url: 'https://call-lead.herokuapp.com/call',
-      to: '+16267102292',
+      to: "+#{number}",
       from: '+16267102292'
     )
   end

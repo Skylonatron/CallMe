@@ -1,5 +1,5 @@
 class LeadsController < ApplicationController
-  before_action :set_lead, only: [:show, :edit, :update, :destroy, :confirm]
+  before_action :set_lead, only: [:show, :edit, :update, :destroy, :confirm, :call]
 
   # API
   def confirm
@@ -11,6 +11,21 @@ class LeadsController < ApplicationController
 
   def upload_csv
 
+  end
+
+  def call
+    twilio = TwilioIntegration.new
+
+    phone_number = @lead.phone_number || @lead.phone_number_2
+    if phone_number.length == 10
+      phone_number = "1#{phone_number}"
+    end
+
+    @lead.update(called: :called)
+    twilio.make_call(phone_number)
+
+    flash[:notice] = "Automated Call has been placed"
+    redirect_to leads_path
   end
 
   def upload_csv_post
@@ -96,6 +111,6 @@ class LeadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lead_params
-      params.require(:lead).permit(:name, :phone_number)
+      params.require(:lead).permit(:first_name, :last_name, :address, :city, :zip_code, :state, :phone_number, :phone_number_2, :email)
     end
 end

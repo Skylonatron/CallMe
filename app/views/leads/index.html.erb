@@ -7,9 +7,6 @@
 <%= link_to 'New Lead', new_lead_path, class: "btn btn-outline-primary" %>
 
 
-
-
-
 <table class="table table-striped">
   <thead>
     <tr>
@@ -40,6 +37,9 @@
         <td><%= lead.phone_number_2 %></td>
         <td><%= lead.email %></td>
         <td><%= lead.called.to_s %></td>
+        <%= content_tag :td do %>
+          <%= link_to 'Automated Call', call_lead_path(lead), method: "POST" if lead.phone_number || lead.phone_number_2 %>
+        <% end %>
         <td><%= link_to 'Show', lead %></td>
         <td><%= link_to 'Edit', edit_lead_path(lead) %></td>
         <td><%= link_to 'Destroy', lead, method: :delete, data: { confirm: 'Are you sure?' } %></td>
