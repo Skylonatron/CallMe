@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
+
   resources :leads do 
     collection do 
       get 'upload_csv', to: 'leads#upload_csv'
@@ -18,6 +23,6 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root 'leads#index'
-  # root 'pages#main'
+  # root 'leads#index'
+  root 'pages#main'
 end

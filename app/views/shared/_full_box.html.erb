@@ -1,0 +1,24 @@
+<% title ||= nil %>
+<% buttons ||= [] %>
+<% padding ||= false %>
+<% yield_class ||= "" %>
+
+<%= content_tag :div, class: "" do %>
+  
+  <%= content_tag :div, class: "title-block" do %>
+
+    <%= content_tag :div, class: "inline-block leads-title" do title end %>
+
+    <%= content_tag :div, class: "inline-block float-right" do %>
+      <% buttons.each do |button| %>
+        <%= link_to button[:name], button[:path], class: "btn my-btn" %>
+      <% end %>
+    <% end %>
+
+  <% end %>
+
+  <%= content_tag :div, class: "leads-block light-shadow #{yield_class}" do %>
+    <%= yield %>
+  <% end %>
+
+<% end %>

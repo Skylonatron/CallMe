@@ -1,5 +1,6 @@
 class LeadsController < ApplicationController
   before_action :set_lead, only: [:show, :edit, :update, :destroy, :confirm, :call]
+  before_action :authenticate_user!, only: [:show, :edit, :update, :destroy, :index, :create, :new]
 
   # API
   def confirm
@@ -41,8 +42,9 @@ class LeadsController < ApplicationController
   # GET /leads
   # GET /leads.json
   def index
-    @leads = Lead.all
-
+    @leads = current_user.leads
+    @buttons = [{ name: "New Leads (CSV)", path: upload_csv_leads_path}, {name: "New Lead", path: new_lead_path}]
+    
     respond_to do |format|
       format.html { render :index }
       format.json { render json: @leads.uncalled.to_json }
@@ -66,11 +68,11 @@ class LeadsController < ApplicationController
   # POST /leads
   # POST /leads.json
   def create
-    @lead = Lead.new(lead_params)
+    @lead = current_user.leads.new(lead_params)
 
     respond_to do |format|
       if @lead.save
-        format.html { redirect_to @lead, notice: 'Lead was successfully created.' }
+        format.html { redirect_to leads_path, notice: 'Lead was successfully created.' }
         format.json { render :show, status: :created, location: @lead }
       else
         format.html { render :new }

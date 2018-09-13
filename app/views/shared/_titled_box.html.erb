@@ -1,0 +1,8 @@
+<% title ||= nil %>
+<% text ||= nil %>
+
+<%= content_tag :div, class: "titled-box" do %>
+  <%= content_tag :div, class: "titled-box-title" do title end %>
+
+  <%= yield %>
+<% end %>

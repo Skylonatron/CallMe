@@ -35,6 +35,8 @@ gem 'jquery-rails'
 
 gem 'twilio-ruby', '~> 5.12.4'
 
+gem 'devise'
+
 
 
 # Use Capistrano for deployment

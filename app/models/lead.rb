@@ -1,6 +1,8 @@
 class Lead < ApplicationRecord
   require 'csv'
 
+  belongs_to :user
+  
   enum called: { uncalled: 0, called: 1 }
 
   def self.import(csv)

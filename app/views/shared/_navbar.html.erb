@@ -1,0 +1,54 @@
+<% title ||= nil %>
+
+<nav class="navbar navbar-expand-lg navbar-light my-navbar">
+  <a class="navbar-brand" href=<%= root_path %>><%= title %></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+
+    <%= content_tag :div, class: "form-inline my-2 my-lg-0" do %>
+
+
+      <%= form_for(@user, as: @user, url: session_path(@user)) do |f| %>
+        <%= f.email_field :email, autofocus: true, class: "form-control mr-sm-2" %>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control mr-sm-2" %>
+      
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log In</button>
+      <% end %>
+
+      <%= form_for(@user, as: @user, url: registration_path(@user)) do |f| %>
+        <button class="btn btn-outline-success my-2 my-sm-0 small-mar-horiz" type="submit">Sign Up</button>
+      <% end if false %>
+
+    <% end unless user_signed_in? %>
+
+    <%= content_tag :a, class: "nav-link", href: destroy_user_session_path, "data-method": "delete" do "Log Out" end if user_signed_in? %>
+  </div>
+</nav>
+
+
+

@@ -1,0 +1,76 @@
+
+.my-navbar {
+  background-color: white;
+  border-bottom: 1px solid #e6e6e6;
+  box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
+  font-weight: bold;
+}
+
+.light-shadow {
+  box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
+}
+
+.my-body {
+  background-color: #fafbfe;
+}
+
+.my-box {
+  background-color: white;
+  box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
+  margin: 30px;
+  padding: 10px;
+}
+
+.titled-box {
+  padding: 20px;
+}
+
+.titled-box-title {
+  color: #6c757d;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.my-text-muted {
+  color: #98a6ad !important;
+}
+
+.my-btn {
+  background-color: #727cf5;
+  color: white;
+}
+
+.my-btn-invert {
+  color: #727cf5;
+  background-color: white;
+  border: 1px solid #727cf5 !important;
+}
+
+.my-btn.btn:hover {
+  text-decoration: none;
+  color: white;
+  background-color: darken(#727cf5, 10%);
+}
+
+.my-btn-invert:hover {
+  text-decoration: none;
+  color: white;
+  background-color: darken(#727cf5, 10%);
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.float-right {
+  float: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.small-mar-horiz {
+  margin-right: 5px;
+  margin-left: 5px;
+}
