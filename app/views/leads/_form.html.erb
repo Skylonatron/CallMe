@@ -1,15 +1,6 @@
 <%= form_with(model: lead, local: true) do |form| %>
-  <% if lead.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(lead.errors.count, "error") %> prohibited this lead from being saved:</h2>
 
-      <ul>
-      <% lead.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'shared/notifications', messages: lead.errors.full_messages %>
 
   <div class="form-row">
 
@@ -68,6 +59,6 @@
   </div>
 
   <div class="text-center">
-    <%= form.submit "Create Lead", class: "btn my-btn" %>
+    <%= form.submit "#{@type == 'new' ? 'Create'  : 'Update'} Lead", class: "btn my-btn" %>
   </div>
 <% end %>

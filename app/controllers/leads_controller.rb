@@ -1,6 +1,6 @@
 class LeadsController < ApplicationController
   before_action :set_lead, only: [:show, :edit, :update, :destroy, :confirm, :call]
-  before_action :authenticate_user!, only: [:show, :edit, :update, :destroy, :index, :create, :new]
+  before_action :authenticate_user!, except: [:confirm]
 
   # API
   def confirm
@@ -11,7 +11,6 @@ class LeadsController < ApplicationController
   # Web
 
   def upload_csv
-
   end
 
   def call
@@ -31,12 +30,19 @@ class LeadsController < ApplicationController
 
   def upload_csv_post
     unless file = params[:file]
-      redirect_to root_path
+      @messages = "There was no file to import"
+      render :upload_csv and return
     end
 
-    Lead.import(file)
+    import_leads = current_user.leads.import(file)
 
-    redirect_to root_path
+    if success = import_leads[:success]
+      redirect_to(leads_path, notice: success)
+    elsif error = import_leads[:fail]
+      @messages = error
+      render :upload_csv and return
+    end
+
   end
 
   # GET /leads
@@ -58,16 +64,19 @@ class LeadsController < ApplicationController
 
   # GET /leads/new
   def new
+    @type = 'new'
     @lead = Lead.new
   end
 
   # GET /leads/1/edit
   def edit
+    @type = 'edit'
   end
 
   # POST /leads
   # POST /leads.json
   def create
+    @type = 'new'
     @lead = current_user.leads.new(lead_params)
 
     respond_to do |format|
@@ -84,6 +93,7 @@ class LeadsController < ApplicationController
   # PATCH/PUT /leads/1
   # PATCH/PUT /leads/1.json
   def update
+    @type = 'edit'
     respond_to do |format|
       if @lead.update(lead_params)
         format.html { redirect_to @lead, notice: 'Lead was successfully updated.' }

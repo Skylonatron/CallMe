@@ -1,9 +1,25 @@
 
 
+<%= render 'shared/full_box', title: "Upload CSV", yield_class: "sign-up-box" do %>
+  
+  <%= render 'shared/notifications', messages: @messages %>
+  <%= form_tag upload_csv_leads_path, multipart: true do %>
 
-<%= form_tag upload_csv_leads_path, multipart: true do %>
+    <div class="form-group">
+      <%= label_tag :file, "Leads" %>
+      <%= file_field_tag :file, class: "form-control-file" %> 
+    </div>
+    <%= submit_tag "Import CSV", class: "my-btn btn" %>
 
-  <%= file_field_tag :file %> 
-  <%= submit_tag "Import CSV" %>
+  <% end %>
 
 <% end %>
+<!-- 
+
+
+<form>
+  <div class="form-group">
+    <label for="exampleFormControlFile1">Example file input</label>
+    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+  </div>
+</form> -->

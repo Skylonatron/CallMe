@@ -1,0 +1,20 @@
+<% unless messages&.class == Array %>
+  <% messages = [messages] %>
+<% end %>
+
+<% type ||= 'warning' %>
+
+<%= content_tag :div, class: "alert alert-#{type} alert-dismissible fade show", rol: "alert" do %>
+  <strong>
+    <% messages.each do |message| %>
+      <% if messages.count > 1 %>
+        <li><%= message %></li>
+      <% else %>
+        <%= message %>
+      <% end %>
+    <% end %>
+  </strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+<% end if messages.any? %>

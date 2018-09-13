@@ -1,6 +1,4 @@
-<h1>Editing Lead</h1>
+<%= render 'shared/full_box', title: "Editing Lead", yield_class: "sign-up-box" do %>
 
-<%= render 'form', lead: @lead %>
-
-<%= link_to 'Show', @lead %> |
-<%= link_to 'Back', leads_path %>
+  <%= render 'form', lead: @lead %>
+<% end %>
