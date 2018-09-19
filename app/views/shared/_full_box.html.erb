@@ -2,6 +2,7 @@
 <% buttons ||= [] %>
 <% padding ||= false %>
 <% yield_class ||= "" %>
+<% search ||= nil %>
 
 <%= content_tag :div, class: "" do %>
   
@@ -13,8 +14,17 @@
       <% buttons.each do |button| %>
         <%= link_to button[:name], button[:path], class: "btn my-btn" %>
       <% end %>
-    <% end %>
 
+      <% if search %>
+        <%= content_tag :div, class: "inline-block small-mar-horiz" do %>
+          <%= form_for(root_path, class: "inline-block") do |f| %>
+            <%= f.email_field :email, autofocus: true, class: "search-bar form-control vertical-align-bottom" %>      
+            <button class="btn btn-outline-primary inline-block" type="submit">Search</button>
+          <% end %>
+        <% end %>
+      <% end %>
+
+    <% end %>
   <% end %>
 
   <%= content_tag :div, class: "leads-block light-shadow #{yield_class}" do %>
