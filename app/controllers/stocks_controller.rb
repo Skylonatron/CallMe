@@ -4,20 +4,21 @@ class StocksController < ApplicationController
   # GET /stocks
   # GET /stocks.json
   def index
-    stocks = current_user.stocks
+    
+    @stocks = current_user.stocks
 
-    @graph_name = stocks.find_by(id: params[:selected_stock])&.name || stocks.first&.name
-    stock = StockQuote::Stock.chart(@graph_name, '1d')
-    chart = stock.chart
+    if @stocks.any?
 
-    puts stock
+      @graph_name = @stocks.find_by(id: params[:selected_stock])&.name || @stocks.first&.name
+      stock = StockQuote::Stock.chart(@graph_name, '1d')
+      chart = stock.chart
 
-    @graph = chart.map do |s|
-      ["#{s['date']} #{s['label']}", s["average"]] if s["average"] > 0
-    end.compact
+      @graph = chart.map do |s|
+        ["#{s['date']} #{s['label']}", s["average"]] if s["average"] > 0
+      end.compact
+    end
 
     @buttons = [{ name: "New Stock", path: new_stock_path}]
-    @stocks = current_user.stocks
   end
 
   # GET /stocks/1
