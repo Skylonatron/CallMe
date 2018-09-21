@@ -1,5 +1,7 @@
 {
   "name": "CallMe",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "highcharts": "^6.1.3"
+  }
 }

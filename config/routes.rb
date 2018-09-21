@@ -20,7 +20,8 @@ Rails.application.routes.draw do
   post 'forward', to: 'twilio#forward'
 
   get 'test', to: 'pages#test'
-  get 'search', to: 'pages#search'
+  post 'test', to: 'pages#test_trends'
+
 
 
 

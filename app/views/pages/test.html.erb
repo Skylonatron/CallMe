@@ -2,8 +2,21 @@
 
 <%= "Min: #{@min}" %>
 <%= "Max: #{@max}" %>
+<%= "Start: #{@start}" %>
+<%= "End: #{@end}" %>
 
-<%= line_chart @graph, title: @symbol %>
+<%= line_chart @graph, title: @symbol, adapter: "highcharts" %>
+
+<%= form_tag test_path(symbol: @symbol), multipart: true do %>
+
+  <div class="form-group">
+    <%= label_tag :file, "Google Trends" %>
+    <%= file_field_tag :file, class: "form-control-file" %> 
+  </div>
+
+  <%= submit_tag "Import", class: "my-btn btn" %>
+
+<% end %>
 
 
 <% end %>
