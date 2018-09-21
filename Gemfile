@@ -39,8 +39,7 @@ gem 'devise'
 
 gem "stock_quote", '~> 2.0.0'
 gem "chartkick"
-
-
+gem 'material_icons'
 
 
 # Use Capistrano for deployment

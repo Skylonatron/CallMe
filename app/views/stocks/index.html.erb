@@ -1,0 +1,17 @@
+
+<%= render 'shared/title_bar', title: "Stocks", buttons: @buttons do %>
+  <%= content_tag :div, class: "row" do %>
+    <%= content_tag :div, class: "col-lg-6 row" do %>
+      <% @stocks.each do |stock| %>
+        
+        <%= render 'stock_box', stock: stock %>
+
+      <% end %>
+    <% end %>
+
+    <%= content_tag :div, class: "col-lg-6 stock-graph-box light-shadow" do %>
+      <%= line_chart @graph, min: @min, max: @max, title: @graph_name, adapter: "highcharts" %>
+    <% end %>
+  <% end %>
+<% end %>
+<%= render 'shared/refresh_js' %>

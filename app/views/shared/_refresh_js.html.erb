@@ -1,0 +1,5 @@
+<%= javascript_tag do %>
+
+  refresh_stocks("<%= current_user.stocks.pluck(:name).join(',') %>")
+  
+<% end if current_user %>

@@ -1,0 +1,31 @@
+<% stock ||= nil %>
+
+
+
+<%= content_tag :div, class: "col-lg-4 nmnp" do %>
+  <%= link_to stocks_path(selected_stock: stock) do %>
+
+    <%= content_tag :div, class: "stock-box over-scroll light-shadow" do %>
+    
+      <%= content_tag :div, class: "stock-title-block" do %>
+      
+        <%= stock&.name&.upcase %>
+
+      <% end %>
+
+      <%= content_tag :div, class: "stock-price-block", id: "stock-#{stock.name}-price" do %>
+
+        <%= "0.00" %>
+
+      <% end %>
+
+
+      <%= content_tag :div, class: "stock-price-percentage", id: "stock-#{stock.name}-change" do %>
+
+        <%= "0.00\% today" %>
+
+      <% end %>
+    <% end %>
+
+  <% end %>
+<% end %>

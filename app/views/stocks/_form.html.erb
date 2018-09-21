@@ -1,0 +1,15 @@
+<%= form_with(model: stock, local: true) do |form| %>
+
+  <%= render 'shared/notifications', messages: stock.errors.full_messages %>
+
+  <div class="form-row col-lg-12">
+
+    <div class="form-group col-lg-12">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+
+  <div class="text-center">
+    <%= form.submit "Add", class: "btn my-btn" %>
+  </div>
+<% end %>

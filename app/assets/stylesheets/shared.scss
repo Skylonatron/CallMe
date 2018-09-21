@@ -25,6 +25,12 @@
   padding: 20px;
 }
 
+.main-block { 
+  margin-right: 70px;
+  margin-left: 70px;
+  min-height: 300px;
+}
+
 .titled-box-title {
   color: #6c757d;
   font-weight: bold;
@@ -79,12 +85,27 @@
   margin-left: 5px;
 }
 
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
 
 .search-bar {
   display: inline-block !important;
   width: 200px !important;
 }
 
+.nmnp {
+  padding: 0px;
+  margin: 0px;
+}
+
+.over-scroll {
+  overflow: scroll;
+}
 
 
 

@@ -1,0 +1,30 @@
+<% title ||= nil %>
+<% buttons ||= [] %>
+<% padding ||= false %>
+<% yield_class ||= "" %>
+<% search ||= nil %>
+  
+<%= content_tag :div, class: "title-block" do %>
+
+  <%= content_tag :div, class: "inline-block leads-title" do title end %>
+
+  <%= content_tag :div, class: "inline-block float-right" do %>
+    <% buttons.each do |button| %>
+      <%= link_to button[:name], button[:path], class: "btn my-btn" %>
+    <% end %>
+
+    <% if search %>
+      <%= content_tag :div, class: "inline-block small-mar-horiz" do %>
+        <%= form_for(:search, url: search, class: "inline-block", method: "get") do |f| %>
+          <%= f.text_field :search, class: "search-bar form-control vertical-align-bottom" %>      
+          <button class="btn btn-outline-primary inline-block" type="submit">Search</button>
+        <% end %>
+      <% end %>
+    <% end %>
+
+  <% end %>
+<% end %>
+
+<%= content_tag :div, class: "main-block" do %>
+  <% yield %>
+<% end %>

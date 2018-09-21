@@ -1,0 +1,61 @@
+// Place all the styles related to the Stocks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.stock-box{
+  background-color: white;
+  margin-bottom: 30px;
+  transition: all .2s ease-in-out;
+}
+
+.stock-box:hover { 
+  transform: scale(1.1); 
+  box-shadow: 0 0 35px 0 rgba(154,161,171,.4);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:-webkit-any-link {
+  text-decoration: none !important;
+}
+
+.stock-title-block{
+  padding-left: 20px;
+  padding-top: 30px;
+  font-size: 30px;
+  padding-right: 5px;
+  color: black;
+
+}
+
+.stock-title-block:hover{
+  text-decoration:none;
+}
+
+.stock-price-block{
+  font-size: 50px;
+  font-weight: bold;
+  padding-left: 20px;
+  padding-right: 5px;
+  color:black;
+  text-decoration:none;
+}
+
+.stock-price-percentage{
+  padding-left: 20px;
+  padding-right: 5px;
+  padding-bottom: 40px;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration:none;
+}
+
+.stock-price-percentage{
+  text-decoration: none;
+}
+
+.stock-graph-box{
+  background-color: white;
+  margin-left: 20px;
+  height: 300px;
+}
