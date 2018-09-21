@@ -4,7 +4,7 @@
 <% yield_class ||= "" %>
 <% search ||= nil %>
 
-<%= content_tag :div, class: "" do %>
+<%= content_tag :div, class: "full-block" do %>
   
   <%= content_tag :div, class: "title-block" do %>
 
@@ -17,8 +17,8 @@
 
       <% if search %>
         <%= content_tag :div, class: "inline-block small-mar-horiz" do %>
-          <%= form_for(root_path, class: "inline-block") do |f| %>
-            <%= f.email_field :email, autofocus: true, class: "search-bar form-control vertical-align-bottom" %>      
+          <%= form_for(:search, url: search, class: "inline-block", method: "get") do |f| %>
+            <%= f.text_field :search, class: "search-bar form-control vertical-align-bottom" %>      
             <button class="btn btn-outline-primary inline-block" type="submit">Search</button>
           <% end %>
         <% end %>

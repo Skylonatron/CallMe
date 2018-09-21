@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   post 'call', to: 'twilio#call'
   post 'forward', to: 'twilio#forward'
 
+  get 'test', to: 'pages#test'
+  get 'search', to: 'pages#search'
+
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

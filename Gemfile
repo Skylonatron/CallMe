@@ -37,6 +37,10 @@ gem 'twilio-ruby', '~> 5.12.4'
 
 gem 'devise'
 
+gem "stock_quote", '~> 2.0.0'
+gem "chartkick"
+
+
 
 
 # Use Capistrano for deployment

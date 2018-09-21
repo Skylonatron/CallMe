@@ -1,0 +1,9 @@
+<%= render 'shared/full_box', title: "Stock", search: test_path do %>
+
+<%= "Min: #{@min}" %>
+<%= "Max: #{@max}" %>
+
+<%= line_chart @graph, title: @symbol %>
+
+
+<% end %>
