@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20180921053705) do
   create_table "stocks", force: :cascade do |t|
     t.string "name"
     t.decimal "value"
+    t.string "rss_url"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

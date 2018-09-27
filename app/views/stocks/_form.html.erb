@@ -5,11 +5,17 @@
   <div class="form-row col-lg-12">
 
     <div class="form-group col-lg-12">
-      <%= form.label :name %>
-      <%= form.text_field :name, class: "form-control" %>
+
+      <% if type == 'new' %>
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "form-control" %>
+      <% elsif type == 'edit' %>
+        <%= form.label :rss_url %>
+        <%= form.text_field :rss_url, class: "form-control" %>
+      <% end %>
     </div>
 
   <div class="text-center">
-    <%= form.submit "Add", class: "btn my-btn" %>
+    <%= form.submit "#{type == 'new' ? "Add" : "Edit"}", class: "btn my-btn" %>
   </div>
 <% end %>

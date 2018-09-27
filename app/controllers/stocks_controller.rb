@@ -24,6 +24,9 @@ class StocksController < ApplicationController
   # GET /stocks/1
   # GET /stocks/1.json
   def show
+    @buttons = [{ name: "Edit", path: edit_stock_path(@stock)}]
+
+    @rss_feed = @stock.get_rss_feed
   end
 
   # GET /stocks/new
@@ -84,6 +87,6 @@ class StocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_params
-      params.require(:stock).permit(:name)
+      params.require(:stock).permit(:name, :rss_url)
     end
 end

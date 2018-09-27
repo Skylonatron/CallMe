@@ -3,7 +3,7 @@
 
 
 <%= content_tag :div, class: "col-lg-4 nmnp" do %>
-  <%= link_to stocks_path(selected_stock: stock) do %>
+  <%= link_to stock_path(stock) do %>
 
     <%= content_tag :div, class: "stock-box over-scroll light-shadow" do %>
     
@@ -25,7 +25,14 @@
         <%= "0.00\% today" %>
 
       <% end %>
-    <% end %>
 
+      <%= content_tag :div do %>
+        <%= content_tag :canvas, id: "myChart-#{stock.name}" do end %>
+      <% end %>
+    <% end %>
   <% end %>
+<% end %>
+
+<%= javascript_tag do %>
+  get_chart('<%= stock.name %>')
 <% end %>

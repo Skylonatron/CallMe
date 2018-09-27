@@ -6,6 +6,7 @@
   background-color: white;
   margin-bottom: 30px;
   transition: all .2s ease-in-out;
+  min-height: 250px;
 }
 
 .stock-box:hover { 
@@ -33,7 +34,7 @@ a:-webkit-any-link {
 }
 
 .stock-price-block{
-  font-size: 50px;
+  font-size: 42px;
   font-weight: bold;
   padding-left: 20px;
   padding-right: 5px;
@@ -44,8 +45,7 @@ a:-webkit-any-link {
 .stock-price-percentage{
   padding-left: 20px;
   padding-right: 5px;
-  padding-bottom: 40px;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
   text-decoration:none;
 }

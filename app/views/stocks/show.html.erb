@@ -1,4 +1,10 @@
-<p id="notice"><%= notice %></p>
+<%= render 'shared/full_box', title: @stock.name, buttons: @buttons do %>
 
-<%= link_to 'Edit', edit_stock_path(@stock) %> |
-<%= link_to 'Back', stocks_path %>
+  <% @rss_feed.each do |item| %>
+
+    <%= link_to(item[:title], item[:link]) %>
+    <br>
+
+  <% end %>
+
+<% end %>
