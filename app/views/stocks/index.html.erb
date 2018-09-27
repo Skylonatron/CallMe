@@ -1,7 +1,7 @@
 
 <%= render 'shared/title_bar', title: "Stocks", buttons: @buttons do %>
   <%= content_tag :div, class: "row" do %>
-    <%= content_tag :div, class: "col-lg-6 row" do %>
+    <%= content_tag :div, class: "col-lg-12 row" do %>
       <% @stocks.each do |stock| %>
         
         <%= render 'stock_box', stock: stock %>
